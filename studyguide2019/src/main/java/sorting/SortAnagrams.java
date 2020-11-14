@@ -1,13 +1,10 @@
 package sorting;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class SortAnagrams {
 
-    public List<String> groupBy(List<String> words) {
+    public List<List<String>> groupBy(List<String> words) {
         if (words == null || words.isEmpty()) {
             throw new IllegalArgumentException();
         }
@@ -26,11 +23,13 @@ public class SortAnagrams {
             }
         }
 
-        List<String> result = new ArrayList<>();
+        List<List<String>> result = new ArrayList<>();
         for (Map.Entry<String, List<String>> kv : map.entrySet()) {
+            List<String> l = new ArrayList<>();
             for (String s : kv.getValue()) {
-                result.add(s);
+                l.add(s);
             }
+            result.add(l);
         }
         return result;
     }
@@ -53,6 +52,8 @@ public class SortAnagrams {
 //            char c = str.charAt(i);
 //            sb.append(count[c]).append(c).append("#");
 //        }
+//        String currentStr = sb.toString();
+//        Arrays.sort(currentStr.toCharArray());
         return sb.toString();
     }
 }

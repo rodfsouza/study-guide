@@ -30,6 +30,7 @@ public class GraphVertex {
             return true;
         }
 
+        current.color = Color.GRAY;
         for (GraphVertex next : current.edges) {
             if (next != pre && next.color != Color.GRAY) {
                 if (hasCycle(next, current)) {
