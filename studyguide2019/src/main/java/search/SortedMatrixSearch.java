@@ -23,7 +23,7 @@ public class SortedMatrixSearch {
             return false;
         }
 
-        int mid = (low + high) / 2;
+        int mid = low + (high - low) / 2; //Avoiding overflow OR high - (high - low) /2
         int left = low;
         int right = high;
 

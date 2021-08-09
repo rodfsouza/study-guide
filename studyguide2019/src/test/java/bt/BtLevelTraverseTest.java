@@ -18,7 +18,7 @@ public class BtLevelTraverseTest {
         b.insertRight(4);
 
         BtLevelTraverse bt = new BtLevelTraverse();
-        List<List<Integer>> res = bt.levelTraverse2(root);
+        List<List<Integer>> res = bt.recursiveLevelTraverse(root);
         print(res);
     }
 

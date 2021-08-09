@@ -26,7 +26,7 @@ The median is 2.0
 Example 2:
 
 nums1 = [1, 2]
-nums2 = [3, 4]
+nums2 = [3, 4]du
 
 The median is (2 + 3)/2 = 2.5
  */

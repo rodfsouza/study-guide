@@ -5,28 +5,18 @@ import java.util.Set;
 
 public class NumberOfIslands {
 
-    class Point {
-        int row;
-        int col;
-
-        public Point(int r, int c) {
-            row = c;
-            col = c;
-        }
-    }
-
     public int countIslands(int[][] matrix) {
         if (matrix == null || matrix.length == 0) {
             return 0;
         }
 
-        Set<Point> visited = new HashSet<>();
+        boolean[][] visited = new boolean[matrix.length][matrix[0].length];
         int numberOfIslands = 0;
 
         for (int row = 0; row < matrix.length; ++row) {
             for(int col = 0; col < matrix[0].length; ++col) {
 
-                if (matrix[row][col] == 1 && !visited.contains(new Point(row, col))) {
+                if (matrix[row][col] == 1 && !visited[row][col]) {
                     explore(matrix, row, col, visited);
                     numberOfIslands++;
                 }
@@ -35,13 +25,12 @@ public class NumberOfIslands {
         return numberOfIslands;
     }
 
-    private void explore(int[][] matrix, int row, int col, Set<Point> visited) {
-        if (!isValid(matrix, row, col) || visited.contains(new Point(row, col))) {
+    private void explore(int[][] matrix, int row, int col, boolean[][] visited) {
+        if (isInValid(matrix, row, col) || visited[row][col] || matrix[row][col] == 0) {
             return;
         }
 
-        Point current = new Point(row, col);
-        visited.add(current);
+        visited[row][col] = true;
 
         explore(matrix, row, col + 1, visited);
         explore(matrix, row + 1, col, visited);
@@ -49,7 +38,7 @@ public class NumberOfIslands {
         explore(matrix, row - 1, col, visited);
     }
 
-    private boolean isValid(int[][] matrix, int row, int col) {
+    private boolean isInValid(int[][] matrix, int row, int col) {
         return row < 0 || col < 0 || row >= matrix.length || col >= matrix[0].length;
     }
 }

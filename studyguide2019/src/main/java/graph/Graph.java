@@ -75,6 +75,7 @@ public class Graph<T>{
     public Collection<Vertex<T>> getAllVertex(){
         return allVertex.values();
     }
+    
     public void setDataForVertex(long id, T data){
         if(allVertex.containsKey(id)){
             Vertex<T> vertex = allVertex.get(id);

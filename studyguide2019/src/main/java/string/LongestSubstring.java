@@ -5,22 +5,58 @@ import java.util.Map;
 
 public class LongestSubstring {
 
+
     public static int lengthOfLongestSubstring(String s) {
-        if (s == null || s.isEmpty()) {
+        if (s == null || s.length() == 0) {
             return 0;
         }
 
+        int windowStart = 0;
+        int maxLength = 0;
         Map<Character, Integer> cache = new HashMap<>();
-        int max = 0;
 
-        for (int i = 0, j = 0; i < s.length(); ++i) {
-            char c = s.charAt(i);
-            if (cache.containsKey(c)) {
-                j = Math.max(j, cache.get(c) + 1);
+        for (int windowEnd = 0; windowEnd < s.length(); ++windowEnd) {
+            char curr = s.charAt(windowEnd);
+
+            if (cache.containsKey(curr)) {
+                windowStart = Math.max(windowStart, cache.get(curr) + 1);
             }
-            cache.put(c, i);
-            max = Math.max(max, i - j + 1);
+
+            cache.put(curr, windowEnd);
+            maxLength = Math.max(maxLength, windowEnd - windowStart + 1);
         }
-        return max;
+
+        return maxLength;
     }
+
+    //    public static int lengthOfLongestSubstring(String s) {
+//        if (s == null || s.isEmpty()) {
+//            return 0;
+//        }
+//
+//        //Map<Character, Integer> cache = new HashMap<>();
+//        int[] cache = new int[256]; //ASCII
+//        boolean[] visited = new boolean[256];
+//        int windowStart = 0;
+//        int max = 0;
+//
+//        for (int windowEnd = 0; windowEnd < s.length(); ++windowEnd) {
+//            //char c = s.charAt(i);
+//            int pos = s.charAt(windowEnd);
+//            int curr = cache[pos];
+//
+//            //cache.containsKey(c)
+//            if (visited[pos]) {
+//                //cache.get(c)
+//                windowStart = Math.max(windowStart, curr + 1);
+//            } else {
+//
+//                //cache.put(c, windowEnd);
+//                cache[pos] = windowEnd;
+//                visited[pos] = true;
+//                max = Math.max(max, windowEnd - windowStart + 1);
+//            }
+//        }
+//        return max;
+//    }
 }

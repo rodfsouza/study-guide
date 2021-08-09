@@ -101,7 +101,13 @@ public class BtLevelTraverse {
             return;
         }
 
-        List<Integer> oneLevel = output.get(level) != null ? output.get(level) : new ArrayList<>();
+        List<Integer> oneLevel = null;
+        if (output.isEmpty() || output.get(level) == null) {
+            oneLevel = new ArrayList<>();
+        } else {
+            oneLevel = output.get(level);
+        }
+
         oneLevel.add(node.value);
         output.add(level, oneLevel);
 

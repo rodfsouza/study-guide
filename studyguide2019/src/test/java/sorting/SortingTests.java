@@ -14,6 +14,7 @@ public class SortingTests {
         List<String> words = new LinkedList<>();
         words.add("tea");
         words.add("ate");
+        words.add("key");
         words.add("banana");
 
         GroupAnagrams anagrams = new GroupAnagrams();

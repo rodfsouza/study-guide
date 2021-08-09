@@ -1,10 +1,6 @@
 package sorting;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class GroupAnagrams {
 
@@ -44,15 +40,21 @@ public class GroupAnagrams {
         //Parse the input
         for (String word : words) {
             int[] count = new int[256];
-            char[] wordCount = word.toCharArray();
+            //char[] wordCount = word.toCharArray();
 
             //Count the occurrences
-            for (int i = 0; i < wordCount.length; ++i) {
-                ++count[wordCount[i]];
+            for (int i = 0; i < word.length(); ++i) {
+                char c = word.charAt(i);
+                ++count[c - 'a'];
+            }
+
+            StringBuilder sb = new StringBuilder();
+            for (int p : count) {
+                sb.append(p).append("#");
             }
 
             //If key does not exists adds
-            String key = buildKey(count, wordCount);
+            String key = sb.toString();//buildKey(count, word);
             if (!map.contains(key)) {
                 map.add(key);
             }
@@ -60,12 +62,68 @@ public class GroupAnagrams {
         return map.size();
     }
 
-    private String buildKey(int[] counter, char[] letters) {
-        StringBuilder key = new StringBuilder();
-        for (int j = 0;j < letters.length; ++j) {
-            key.append(counter[letters[j]]).append("#");
+    public List<List<String>> groupBy2(final List<String> words) {
+        if (words == null || words.isEmpty()) {
+            return null;
         }
-        return key.toString();
+
+        Map<String, List<String>> map = new HashMap<>();
+        List<List<String>> results = new ArrayList<>();
+        int[] count = new int[256];
+
+        //Parse the input
+        for (String word : words) {
+
+            //Count the occurrences
+            for (int i = 0; i < word.length(); ++i) {
+                char c = word.charAt(i);
+                ++count[c - 'a'];
+            }
+
+            //Build key
+            StringBuilder sb = new StringBuilder();
+            int counter = 0;
+            for (int p : count) {
+                sb.append(p).append("#");
+                count[counter++] = 0;
+            }
+
+            //If key does not exists adds
+            String key = sb.toString();//buildKey(count, word);
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+            }
+
+            map.get(key).add(word);
+        }
+
+        results.addAll(map.values());
+        return results;
+    }
+
+    //Most efficient
+    public List<List<String>> groupBy3(final List<String> words) {
+
+        if (words == null || words.isEmpty()) {
+            return null;
+        }
+
+        Map<String, List<String>> groups = new HashMap<>();
+
+        for (String str : words) {
+
+            //Amortized O (n log(n))
+            char[] c = str.toCharArray();
+            Arrays.sort(c);
+            String sorted = new String(c);
+
+            if (!groups.containsKey(sorted)) {
+                groups.put(sorted, new LinkedList<>());
+            }
+
+            groups.get(sorted).add(str);
+        }
+        return new LinkedList<>(groups.values());
     }
 
 }

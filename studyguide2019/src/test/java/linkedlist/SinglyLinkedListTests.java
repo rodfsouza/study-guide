@@ -45,6 +45,160 @@ public class SinglyLinkedListTests {
         Assertions.assertTrue(newHead != null);
     }
 
+    @Test
+    public void testMergeSorted() {
+
+        SinglyLinkedListNode l1 = new SinglyLinkedListNode(1);
+        SinglyLinkedListNode b = new SinglyLinkedListNode(2);
+        SinglyLinkedListNode c = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode d = new SinglyLinkedListNode(4);
+        //SinglyLinkedListNode e = new SinglyLinkedListNode(3);
+
+        l1.setNext(b);
+        b.setNext(c);
+        c.setNext(d);
+        //d.setNext(e);
+
+        SinglyLinkedListNode l2 = new SinglyLinkedListNode(1);
+        SinglyLinkedListNode e = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode f = new SinglyLinkedListNode(5);
+        SinglyLinkedListNode g = new SinglyLinkedListNode(7);
+
+        l2.setNext(e);
+        e.setNext(f);
+        f.setNext(g);
+
+        SinglyLinkedListNode root = new SinglyLinkedListNode(0);
+        root = root.mergeSorted(l1, l2);
+        Assertions.assertTrue(root != null);
+    }
+
+    @Test
+    public void testInsertSortedListOnTail() {
+
+        SinglyLinkedListNode head = new SinglyLinkedListNode(1);
+        SinglyLinkedListNode b = new SinglyLinkedListNode(2);
+        SinglyLinkedListNode c = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode d = new SinglyLinkedListNode(4);
+        //SinglyLinkedListNode e = new SinglyLinkedListNode(3);
+
+        head.setNext(b);
+        b.setNext(c);
+        //c.setNext(d);
+        //d.setNext(e);
+
+        SinglyLinkedListNode root = new SinglyLinkedListNode(0);
+        root = root.insertOnSorted(head, d);
+        Assertions.assertTrue(root != null);
+    }
+
+    @Test
+    public void testInsertSortedListOnHead() {
+
+        SinglyLinkedListNode head = new SinglyLinkedListNode(2);
+        SinglyLinkedListNode b = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode c = new SinglyLinkedListNode(4);
+        SinglyLinkedListNode d = new SinglyLinkedListNode(1);
+        //SinglyLinkedListNode e = new SinglyLinkedListNode(3);
+
+        head.setNext(b);
+        b.setNext(c);
+        //c.setNext(d);
+        //d.setNext(e);
+
+        SinglyLinkedListNode root = new SinglyLinkedListNode(0);
+        root = root.insertOnSorted(head, d);
+        Assertions.assertTrue(root != null);
+    }
+
+    @Test
+    public void testInsertSortedListOnMiddle() {
+
+        SinglyLinkedListNode head = new SinglyLinkedListNode(1);
+        SinglyLinkedListNode b = new SinglyLinkedListNode(2);
+        SinglyLinkedListNode c = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode d = new SinglyLinkedListNode(5);
+        SinglyLinkedListNode e = new SinglyLinkedListNode(4);
+
+        head.setNext(b);
+        b.setNext(c);
+        c.setNext(d);
+        //d.setNext(e);
+
+        SinglyLinkedListNode root = new SinglyLinkedListNode(0);
+        root = root.insertOnSorted(head, e);
+        Assertions.assertTrue(root != null);
+    }
+
+    @Test
+    public void testSwapPairs() {
+
+        SinglyLinkedListNode head = new SinglyLinkedListNode(1);
+        SinglyLinkedListNode b = new SinglyLinkedListNode(2);
+        SinglyLinkedListNode c = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode d = new SinglyLinkedListNode(4);
+
+
+        head.setNext(b);
+        b.setNext(c);
+        c.setNext(d);
+        //d.setNext(e);
+
+        SinglyLinkedListNode root = new SinglyLinkedListNode(0);
+        root = root.swapPairs(head);
+        Assertions.assertTrue(root != null);
+    }
+
+    @Test
+    public void testRotateRightSuccess() {
+        SinglyLinkedListNode head = new SinglyLinkedListNode(1);
+        head.setNext(new SinglyLinkedListNode(2));
+        head.getNext().setNext(new SinglyLinkedListNode(3));
+        head.getNext().getNext().setNext(new SinglyLinkedListNode(4));
+        head.getNext().getNext().getNext().setNext(new SinglyLinkedListNode(5));
+
+        SinglyLinkedListNode otherHead = head.rotateRight(head, 2);
+        Assertions.assertFalse(otherHead == null);
+    }
+
+    @Test
+    public void testRotateRightSuccess2() {
+        SinglyLinkedListNode head = new SinglyLinkedListNode(0);
+        head.setNext(new SinglyLinkedListNode(1));
+        head.getNext().setNext(new SinglyLinkedListNode(2));
+
+        SinglyLinkedListNode otherHead = head.rotateRight(head, 4);
+        Assertions.assertFalse(otherHead == null);
+    }
+
+    @Test
+    public void testRotateRightSuccess3() {
+        SinglyLinkedListNode head = new SinglyLinkedListNode(1);
+        head.setNext(new SinglyLinkedListNode(2));
+        //head.getNext().setNext(new SinglyLinkedListNode(2));
+
+        SinglyLinkedListNode otherHead = head.rotateRight(head, 1);
+        Assertions.assertFalse(otherHead == null);
+    }
+
+
+    @Test
+    public void testDeleteDuplicatedNodes() {
+        SinglyLinkedListNode a = new SinglyLinkedListNode(1);
+        SinglyLinkedListNode b = new SinglyLinkedListNode(2);
+        SinglyLinkedListNode c = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode d = new SinglyLinkedListNode(3);
+        SinglyLinkedListNode e = new SinglyLinkedListNode(4);
+
+        a.setNext(b);
+        b.setNext(c);
+        c.setNext(d);
+        d.setNext(e);
+
+        SinglyLinkedListNode newHead = a.deleteDuplicates(a);
+        Assertions.assertTrue(newHead != null);
+    }
+
 //    @Test
 //    public void nodeInTheMiddleTest() {
 //        SinglyLinkedListNode head = new SinglyLinkedListNode(1);

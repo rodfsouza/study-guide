@@ -37,7 +37,7 @@ public class LongestCommonPrefix {
             return strs[l];
         }
         else {
-            int mid = (l + r)/2;
+            int mid = l + (l + r)/2;//Avoiding overflow
             String lcpLeft =   longestCommonPrefix(strs, l , mid);
             String lcpRight =  longestCommonPrefix(strs, mid + 1,r);
             return commonPrefix(lcpLeft, lcpRight);
@@ -62,7 +62,7 @@ public class LongestCommonPrefix {
         int low = 1;
         int high = minLen;
         while (low <= high) {
-            int middle = (low + high) / 2;
+            int middle = low + (low + high) / 2; //Avoiding overflow
             if (isCommonPrefix(strs, middle))
                 low = middle + 1;
             else
@@ -109,7 +109,7 @@ public class LongestCommonPrefix {
         }
 
         public void put(char ch, TrieNode node) {
-            links[ch -'a'] = node;
+            links[ch -'a'] = node; //Calculate the index based on ASCII
             size++;
         }
 

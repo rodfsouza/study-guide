@@ -14,7 +14,7 @@ public class BinarySearch {
             return false;
         }
 
-        int middle = array.length / 2;
+        int middle = array.length / 2; //overflow
 
         if (toFind > array[middle]) {
             return binarySearch(array, ++middle, array.length - 1, toFind);

@@ -38,23 +38,23 @@ public class LongestPalindrome {
         return max_ending_here;
     }
 
-    public String longestPalindrome(String s) {
-        if (s == null || s.isEmpty()) {
-            return "";
-        }
-
-        String currentMax = "";
-        String max = "";
-
-        for (int i = 0; i < s.length(); ++i) {
-            currentMax = currentMax + s.charAt(i);
-
-            if (max.length() < currentMax.length() && isPalindrome(currentMax)) {
-                max = currentMax;
-            }
-        }
-        return max;
-    }
+//    public String longestPalindrome(String s) {
+//        if (s == null || s.isEmpty()) {
+//            return "";
+//        }
+//
+//        String currentMax = "";
+//        String max = "";
+//
+//        for (int i = 0; i < s.length(); ++i) {
+//            currentMax = currentMax + s.charAt(i);
+//
+//            if (max.length() < currentMax.length() && isPalindrome(currentMax)) {
+//                max = currentMax;
+//            }
+//        }
+//        return max;
+//    }
 
     private boolean isPalindrome(String s) {
         int mid = s.length()/2;
@@ -64,5 +64,38 @@ public class LongestPalindrome {
             }
         }
         return true;
+    }
+
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() < 1) {
+            return "";
+        }
+
+        int start = 0;
+        int end = 0;
+
+        for (int i = 0; i < s.length(); ++i) {
+            int m = expandAroundCenter(s, i, i);
+            int n = expandAroundCenter(s, i, i + 1);
+
+            int len = Math.max(m, n);
+            if (len > end - start) {
+                start = i - (len - 1) / 2; //Why?
+                end = i + len / 2; //Why??
+            }
+        }
+
+        return s.substring(start, end + 1);
+    }
+
+    private int expandAroundCenter(String s, int left, int right) {
+        int l = left;
+        int r = right;
+
+        while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
+            l--;
+            r++;
+        }
+        return r - l - 1;
     }
 }
