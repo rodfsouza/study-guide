@@ -33,11 +33,14 @@ Explanation: 342 + 465 = 807.
             l2 = l2 == null ? l2 : l2.next;
         }
 
+        if (carry > 0) {
+            prev.next = new ListNode(carry);
+        }
+
         return dummyHead.next;
     }
 
-
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 

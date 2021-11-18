@@ -21,9 +21,9 @@ public class GroupAnagramTests {
         List<List<String>> expected = new ArrayList<>();
 
         List<String> a = Arrays.asList("cat", "act");
-        List<String> b = Arrays.asList("study", "dusty");
         List<String> c = Arrays.asList("elbow", "below");
         List<String> d = Arrays.asList("debitcard", "badcredit");
+        List<String> b = Arrays.asList("study", "dusty");
         expected.add(a);
         expected.add(b);
         expected.add(c);
@@ -31,6 +31,6 @@ public class GroupAnagramTests {
 
         GroupAnagram s = new GroupAnagram();
         List<List<String>> result = s.groupBy(input);
-        Assertions.assertEquals(expected, result);
+        Assertions.assertIterableEquals(expected, result);
     }
 }

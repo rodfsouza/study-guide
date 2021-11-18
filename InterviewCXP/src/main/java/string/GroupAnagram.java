@@ -28,11 +28,10 @@ public class GroupAnagram {
 
         List<List<String>> result = new ArrayList<>();
         for(Map.Entry<String, List<String>> kv : map.entrySet()) {
-            List<String> l = new ArrayList<>();
-            for (String s : kv.getValue()) {
-                l.add(s);
+            List<String> list = kv.getValue();
+            if (list.size() > 1) {
+                result.add(kv.getValue());
             }
-            result.add(l);
         }
         return result;
     }
