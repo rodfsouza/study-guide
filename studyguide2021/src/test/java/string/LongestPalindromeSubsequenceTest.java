@@ -13,7 +13,7 @@ public class LongestPalindromeSubsequenceTest {
         longest = new LongestPalindromeSubsequence();
     }
 
-    @Test
+    //@Test
     public void testLongestPalindromeSubsequence1() {
         String input = "bbbab";
         int result = longest.compute(input);
@@ -25,5 +25,12 @@ public class LongestPalindromeSubsequenceTest {
         String input = "bbbab";
         int result = longest.compute2(input);
         Assertions.assertEquals(4, result);
+    }
+
+    @Test
+    public void testLongestPalindromeSubsequence3() {
+        String input = "cbbd";
+        int result = longest.compute2(input);
+        Assertions.assertEquals(2, result);
     }
 }
