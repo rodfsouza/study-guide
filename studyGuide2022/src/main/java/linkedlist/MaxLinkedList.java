@@ -1,16 +1,15 @@
 package linkedlist;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
-public class MaxCircularLinkedList {
+public class MaxLinkedList {
 
     private SinglyListNode head;
     private SinglyListNode tail;
 
     private int size;
 
-    public MaxCircularLinkedList() {
+    public MaxLinkedList() {
         this.size = 0;
     }
 
@@ -33,7 +32,7 @@ public class MaxCircularLinkedList {
                 if (prev != null) { //If node happens to be in the middle
                     node.next = prev.next;
                     prev.next = node;
-                } else { //If node is always appended in the front
+                } else { //Else node is always appended in the front
                     node.next = cur;
                     cur = node;
                     head = cur;
@@ -49,12 +48,8 @@ public class MaxCircularLinkedList {
         }
 
         if (cur == null) { //If the item is smallest of the actual ones on the list
-            cur = head;
-            while (cur.next != null) {
-                cur = cur.next;
-            }
             tail = node;
-            cur.next = tail;
+            prev.next = tail;
             size++;
         }
     }

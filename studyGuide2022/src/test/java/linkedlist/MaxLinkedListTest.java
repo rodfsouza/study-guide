@@ -3,14 +3,13 @@ package linkedlist;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
-public class MaxCircularLinkedListTest {
+public class MaxLinkedListTest {
 
     @Test
-    public void testMaxCircularLinkedList() throws IllegalAccessException {
-        MaxCircularLinkedList queue = new MaxCircularLinkedList();
+    public void testMaxLinkedList() throws IllegalAccessException {
+        MaxLinkedList queue = new MaxLinkedList();
         queue.add(1);
         queue.add(3);
         queue.add(2);
@@ -24,8 +23,8 @@ public class MaxCircularLinkedListTest {
     }
 
     @Test
-    public void testIteratorMaxCircularLinkedList() {
-        MaxCircularLinkedList queue = new MaxCircularLinkedList();
+    public void testIteratorMaxLinkedList() {
+        MaxLinkedList queue = new MaxLinkedList();
         queue.add(1);
         queue.add(3);
         queue.add(2);

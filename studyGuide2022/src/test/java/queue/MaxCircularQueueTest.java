@@ -1,6 +1,7 @@
-package sort;
+package queue;
 
 import org.junit.jupiter.api.Test;
+import queue.MaxCircularQueue;
 
 public class MaxCircularQueueTest {
 
