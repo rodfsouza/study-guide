@@ -1,9 +1,12 @@
 package hashtable;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public class ArrayHashMap<K, V> implements MyMap<K, V> {
 
+    private static final Map<K,V> map = new HashMap<>();
     private static final int DEFAULT_SIZE_FACTOR = 32;
     private static final float LOAD_FACTOR = 0.75f;
 

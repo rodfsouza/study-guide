@@ -67,7 +67,7 @@ public class LongestPalindrome {
     }
 
     public String longestPalindrome(String s) {
-        if (s == null || s.length() < 1) {
+        if (s == null || s.isEmpty()) {
             return "";
         }
 
@@ -79,9 +79,9 @@ public class LongestPalindrome {
             int n = expandAroundCenter(s, i, i + 1);
 
             int len = Math.max(m, n);
-            if (len > end - start) {
-                start = i - (len - 1) / 2; //Why?
-                end = i + len / 2; //Why??
+            if (len > end - start) { //This means we found the next center
+                start = i - (len - 1) / 2; //This sets the start of the palindrome to the center
+                end = i + len / 2; //This sets the end of the palindrome
             }
         }
 
@@ -89,13 +89,10 @@ public class LongestPalindrome {
     }
 
     private int expandAroundCenter(String s, int left, int right) {
-        int l = left;
-        int r = right;
-
-        while (l >= 0 && r < s.length() && s.charAt(l) == s.charAt(r)) {
-            l--;
-            r++;
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
         }
-        return r - l - 1;
+        return right - left - 1;
     }
 }

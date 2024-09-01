@@ -2,6 +2,7 @@ package array;
 
 public class MedianOfTwoArraysBinarySearch {
 
+    //https://leetcode.com/problems/median-of-two-sorted-arrays/solutions/4071182/99-99-acceptance-with-optimised-solution-explained-in-detail/
     public double findMedian(int[] a, int[] b) {
 
         if (a.length > b.length) {

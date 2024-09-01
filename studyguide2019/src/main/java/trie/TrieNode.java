@@ -1,6 +1,6 @@
 package trie;
 
-public class TrieNode {
+public class ATrieNode {
 
     TrieNode childs[];
     int ALPHABET_SIZE = 26;
